@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.32112.339
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{C35CF7A7-32D3-4A1A-80D4-FA75FC974DA0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{B322BEB7-571A-49EF-84EF-09B79B10C2A3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{7815F708-817D-4978-8460-7FC8ABC75DC9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{D404B39D-3F96-42F3-B22D-0A144BC67213}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{1F298691-5E64-465E-A66A-679B321A7A3F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{9F5FB2D3-78C5-4E15-BB6E-FA8985FFB217}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Domain", "HR.LeaveManagement.Domain\HR.LeaveManagement.Domain.csproj", "{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{7815F708-817D-4978-8460-7FC8ABC75DC9} = {C35CF7A7-32D3-4A1A-80D4-FA75FC974DA0}
+		{D404B39D-3F96-42F3-B22D-0A144BC67213} = {C35CF7A7-32D3-4A1A-80D4-FA75FC974DA0}
+		{1F298691-5E64-465E-A66A-679B321A7A3F} = {C35CF7A7-32D3-4A1A-80D4-FA75FC974DA0}
+		{9F5FB2D3-78C5-4E15-BB6E-FA8985FFB217} = {C35CF7A7-32D3-4A1A-80D4-FA75FC974DA0}
+		{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED} = {D404B39D-3F96-42F3-B22D-0A144BC67213}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EF45B43E-6B2E-4798-A04B-8FFC14B8C76F}
+	EndGlobalSection
+EndGlobal
