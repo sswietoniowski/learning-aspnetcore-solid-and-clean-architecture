@@ -15,7 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{9F5FB2D3-78C5-4E15-BB6E-FA8985FFB217}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Domain", "HR.LeaveManagement.Domain\HR.LeaveManagement.Domain.csproj", "{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HR.LeaveManagement.Domain", "HR.LeaveManagement.Domain\HR.LeaveManagement.Domain.csproj", "{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HR.LeaveManagement.Application", "HR.LeaveManagement.Application\HR.LeaveManagement.Application.csproj", "{1D56B3EB-244A-4014-B6B0-4A17E731470A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D56B3EB-244A-4014-B6B0-4A17E731470A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D56B3EB-244A-4014-B6B0-4A17E731470A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D56B3EB-244A-4014-B6B0-4A17E731470A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D56B3EB-244A-4014-B6B0-4A17E731470A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -37,6 +43,7 @@ Global
 		{1F298691-5E64-465E-A66A-679B321A7A3F} = {C35CF7A7-32D3-4A1A-80D4-FA75FC974DA0}
 		{9F5FB2D3-78C5-4E15-BB6E-FA8985FFB217} = {C35CF7A7-32D3-4A1A-80D4-FA75FC974DA0}
 		{BBEB357D-6ABF-4CA5-805C-FBCBEBB03DED} = {D404B39D-3F96-42F3-B22D-0A144BC67213}
+		{1D56B3EB-244A-4014-B6B0-4A17E731470A} = {D404B39D-3F96-42F3-B22D-0A144BC67213}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EF45B43E-6B2E-4798-A04B-8FFC14B8C76F}
