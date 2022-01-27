@@ -6,7 +6,8 @@ namespace HR.LeaveManagement.Application.Persistence.Contracts
 {
     public interface ILeaveRequestRepository : IGenericRepository<LeaveRequest>
     {
-        public Task<IReadOnlyCollection<LeaveRequest>> GetLeaveRequestsWithDetails();
-        public Task<LeaveRequest> GetLeaveRequestWithDetails(int id);
+        Task<IReadOnlyCollection<LeaveRequest>> GetLeaveRequestsWithDetails();
+        Task<LeaveRequest> GetLeaveRequestWithDetails(int id);
+        Task ChangeApprovalStatus(LeaveRequest leaveRequest, bool? approvalStatus);
     }
 }
