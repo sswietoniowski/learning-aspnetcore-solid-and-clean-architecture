@@ -1,10 +1,12 @@
-﻿using AutoMapper;
+﻿using System;
+using AutoMapper;
 using HR.LeaveManagement.Application.Features.LeaveAllocations.Requests.Commands;
 using HR.LeaveManagement.Application.Persistence.Contracts;
 using HR.LeaveManagement.Domain;
 using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
+using HR.LeaveManagement.Application.DTOs.LeaveAllocation.Validators;
 
 namespace HR.LeaveManagement.Application.Features.LeaveAllocations.Handlers.Commands
 {
@@ -21,6 +23,13 @@ namespace HR.LeaveManagement.Application.Features.LeaveAllocations.Handlers.Comm
 
         public async Task<int> Handle(CreateLeaveAllocationCommand request, CancellationToken cancellationToken)
         {
+            var validator = new CreateLeaveAllocationDtoValidator();
+            var validationResult = await validator.ValidateAsync(request.LeaveAllocationDto);
+            if (validationResult.IsValid == false)
+            {
+                throw new Exception();
+            }
+
             var leaveAllocation = _mapper.Map<LeaveAllocation>(request.LeaveAllocationDto);
             leaveAllocation = await _leaveAllocationRepository.Add(leaveAllocation);
             return leaveAllocation.Id;
