@@ -6,6 +6,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using HR.LeaveManagement.Application.DTOs.LeaveRequest.Validators;
+using HR.LeaveManagement.Application.Exceptions;
 
 namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Commands
 {
@@ -26,7 +27,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Command
             var validationResult = await validator.ValidateAsync(request.LeaveRequestDto);
             if (validationResult.IsValid == false)
             {
-                throw new Exception();
+                throw new ValidationException(validationResult);
             }
 
             var leaveRequest = await _leaveRequestRepository.Get(request.Id);

@@ -7,6 +7,7 @@ using MediatR;
 using System.Threading;
 using System.Threading.Tasks;
 using HR.LeaveManagement.Application.DTOs.LeaveType.Validators;
+using HR.LeaveManagement.Application.Exceptions;
 
 namespace HR.LeaveManagement.Application.Features.LeaveTypes.Handlers.Commands
 {
@@ -27,7 +28,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveTypes.Handlers.Commands
             var validationResult = await validator.ValidateAsync(request.LeaveTypeDto);
             if (validationResult.IsValid == false)
             {
-                throw new Exception();
+                throw new ValidationException(validationResult);
             }
 
             var leaveType = _mapper.Map<LeaveType>(request.LeaveTypeDto);
