@@ -1,7 +1,6 @@
-﻿using System.Collections.Generic;
-using HR.LeaveManagement.Application.DTOs;
-using HR.LeaveManagement.Application.DTOs.LeaveType;
+﻿using HR.LeaveManagement.Application.DTOs.LeaveType;
 using MediatR;
+using System.Collections.Generic;
 
 namespace HR.LeaveManagement.Application.Features.LeaveTypes.Requests.Queries
 {
