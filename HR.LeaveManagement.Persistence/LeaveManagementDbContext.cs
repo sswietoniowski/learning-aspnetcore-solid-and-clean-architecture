@@ -1,10 +1,9 @@
-﻿using System;
-using System.Threading;
-using System.Threading.Tasks;
-using HR.LeaveManagement.Domain;
+﻿using HR.LeaveManagement.Domain;
 using HR.LeaveManagement.Domain.Common;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
+using System;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.Persistence
 {
@@ -16,11 +15,6 @@ namespace HR.LeaveManagement.Persistence
 
         public LeaveManagementDbContext(DbContextOptions<LeaveManagementDbContext> options) : base(options)
         {
-        }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -39,7 +33,7 @@ namespace HR.LeaveManagement.Persistence
                     entry.Entity.CreatedDate = DateTime.Now;
                 }
             }
-            
+
             return base.SaveChangesAsync(cancellationToken);
         }
     }
