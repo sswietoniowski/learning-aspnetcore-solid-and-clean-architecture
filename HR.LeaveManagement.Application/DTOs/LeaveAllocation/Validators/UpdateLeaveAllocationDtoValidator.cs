@@ -5,9 +5,9 @@ namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation.Validators
 {
     public class UpdateLeaveAllocationDtoValidator : AbstractValidator<UpdateLeaveAllocationDto>
     {
-        public UpdateLeaveAllocationDtoValidator(ILeaveAllocationRepository leaveAllocationRepository)
+        public UpdateLeaveAllocationDtoValidator(ILeaveTypeRepository leaveTypeRepository)
         {
-            Include(new ILeaveAllocationDtoValidator(leaveAllocationRepository));
+            Include(new ILeaveAllocationDtoValidator(leaveTypeRepository));
 
             RuleFor(p => p.Id).NotNull().WithMessage("{PropertyName} must be present.");
         }

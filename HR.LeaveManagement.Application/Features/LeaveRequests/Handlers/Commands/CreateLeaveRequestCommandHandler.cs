@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using HR.LeaveManagement.Application.Contracts.Infrastructure;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.DTOs.LeaveRequest.Validators;
 using HR.LeaveManagement.Application.Features.LeaveRequests.Requests.Commands;
@@ -14,18 +15,26 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Command
     public class CreateLeaveRequestCommandHandler : IRequestHandler<CreateLeaveRequestCommand, BaseCommonResponse>
     {
         private readonly ILeaveRequestRepository _leaveRequestRepository;
+        private readonly ILeaveTypeRepository _leaveTypeRepository;
+        private readonly IEmailSender _emailSender;
         private readonly IMapper _mapper;
 
-        public CreateLeaveRequestCommandHandler(ILeaveRequestRepository leaveRequestRepository, IMapper mapper)
+        public CreateLeaveRequestCommandHandler(
+            ILeaveRequestRepository leaveRequestRepository,
+            ILeaveTypeRepository leaveTypeRepository,
+            IEmailSender emailSender,
+            IMapper mapper)
         {
             _leaveRequestRepository = leaveRequestRepository;
+            _leaveTypeRepository = leaveTypeRepository;
+            _emailSender = emailSender;
             _mapper = mapper;
         }
 
         public async Task<BaseCommonResponse> Handle(CreateLeaveRequestCommand request, CancellationToken cancellationToken)
         {
             var response = new BaseCommonResponse();
-            var validator = new CreateLeaveRequestDtoValidator(_leaveRequestRepository);
+            var validator = new CreateLeaveRequestDtoValidator(_leaveTypeRepository);
             var validationResult = await validator.ValidateAsync(request.LeaveRequestDto);
 
             if (validationResult.IsValid == false)

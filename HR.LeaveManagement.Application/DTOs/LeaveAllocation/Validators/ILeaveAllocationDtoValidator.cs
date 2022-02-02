@@ -1,17 +1,16 @@
-﻿using System;
-using FluentValidation;
+﻿using FluentValidation;
 using HR.LeaveManagement.Application.Contracts.Persistence;
+using System;
 
 namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation.Validators
 {
     public class ILeaveAllocationDtoValidator : AbstractValidator<ILeaveAllocationDto>
     {
-        private readonly ILeaveAllocationRepository _leaveAllocationRepository;
+        private readonly ILeaveTypeRepository _leaveTypeRepository;
 
-        public ILeaveAllocationDtoValidator(ILeaveAllocationRepository leaveAllocationRepository)
+        public ILeaveAllocationDtoValidator(ILeaveTypeRepository leaveTypeRepository)
         {
-            _leaveAllocationRepository = leaveAllocationRepository;
-
+            _leaveTypeRepository = leaveTypeRepository;
             RuleFor(p => p.NumberDays)
                 .NotEmpty().WithMessage("{PropertyName} is required.")
                 .GreaterThan(0);
@@ -20,7 +19,7 @@ namespace HR.LeaveManagement.Application.DTOs.LeaveAllocation.Validators
                 .GreaterThan(0)
                 .MustAsync(async (id, token) =>
                 {
-                    var leaveTypeExists = await _leaveAllocationRepository.Exists(id);
+                    var leaveTypeExists = await _leaveTypeRepository.Exists(id);
                     return !leaveTypeExists;
                 }).WithMessage("{PropertyName} does not exist.");
 
