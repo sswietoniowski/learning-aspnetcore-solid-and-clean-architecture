@@ -55,12 +55,12 @@ namespace HR.LeaveManagement.Api.Controllers
             return NoContent();
         }
 
-        // PUT api/<LeaveRequestsController>/changeapproval
-        [HttpPut("changeapproval")]
-        public async Task<ActionResult> ChangeApproval(
+        // PUT api/<LeaveRequestsController>/changeapproval/5
+        [HttpPut("changeapproval/{id}")]
+        public async Task<ActionResult> ChangeApproval(int id,
             [FromBody] ChangeLeaveRequestApprovalDto changeLeaveRequestApproval)
         {
-            var command = new UpdateLeaveRequestCommand {ChangeLeaveRequestApprovalDto = changeLeaveRequestApproval};
+            var command = new UpdateLeaveRequestCommand {Id = id, ChangeLeaveRequestApprovalDto = changeLeaveRequestApproval};
             await _mediator.Send(command);
             return NoContent();
         }
