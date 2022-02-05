@@ -24,6 +24,7 @@ namespace HR.LeaveManagement.Persistence.Repositories
         public async Task Delete(T entity)
         {
             _dbContext.Set<T>().Remove(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
         public async Task<bool> Exists(int id)

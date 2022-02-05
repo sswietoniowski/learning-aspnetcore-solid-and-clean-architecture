@@ -27,10 +27,12 @@ namespace HR.LeaveManagement.Persistence
             foreach (var entry in ChangeTracker.Entries<BaseDomainEntity>())
             {
                 entry.Entity.LastModifiedDate = DateTime.Now;
+                entry.Entity.LastModifiedBy = "jdoe@unknown.com";
 
                 if (entry.State == EntityState.Added)
                 {
                     entry.Entity.CreatedDate = DateTime.Now;
+                    entry.Entity.CreatedBy = "jdoe@unknown.com";
                 }
             }
 
