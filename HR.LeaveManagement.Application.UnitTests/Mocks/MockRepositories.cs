@@ -22,6 +22,12 @@ namespace HR.LeaveManagement.Application.UnitTests.Mocks
                     Id = 2,
                     Name = "Test Sick",
                     DefaultDays = 15
+                },
+                new LeaveType
+                {
+                    Id = 3,
+                    Name = "Test Maternity",
+                    DefaultDays = 90
                 }
             };
 
