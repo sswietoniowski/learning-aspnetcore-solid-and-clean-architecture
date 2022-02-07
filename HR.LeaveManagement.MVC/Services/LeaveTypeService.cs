@@ -11,24 +11,22 @@ namespace HR.LeaveManagement.MVC.Services
     public class LeaveTypeService : BaseHttpService, ILeaveTypeService
     {
         private readonly IMapper _mapper;
-        private readonly IClient _httpClient;
-        private readonly ILocalStorageService _localStorageService;
 
         public LeaveTypeService(IMapper mapper, IClient httpClient, ILocalStorageService localStorageService) : base(httpClient, localStorageService)
         {
             _mapper = mapper;
-            _httpClient = httpClient;
-            _localStorageService = localStorageService;
         }
 
-        public Task<List<LeaveTypeVM>> GetLeaveTypes()
+        public async Task<List<LeaveTypeVM>> GetLeaveTypes()
         {
-            throw new System.NotImplementedException();
+            var leaveTypes = await _client.LeaveTypesAllAsync();
+            return _mapper.Map<List<LeaveTypeVM>>(leaveTypes);
         }
 
-        public Task<LeaveTypeVM> GetLeaveTypeDetails(int id)
+        public async Task<LeaveTypeVM> GetLeaveTypeDetails(int id)
         {
-            throw new System.NotImplementedException();
+            var leaveType = await _client.LeaveTypesGETAsync(id);
+            return _mapper.Map<LeaveTypeVM>(leaveType);
         }
 
         public Task<Response<int>> CreateLeaveType(CreateLeaveTypeVM leaveType)
@@ -36,12 +34,12 @@ namespace HR.LeaveManagement.MVC.Services
             throw new System.NotImplementedException();
         }
 
-        public Task UpdateLeaveType(LeaveTypeVM leaveType)
+        public Task<Response<int>> UpdateLeaveType(int id, LeaveTypeVM leaveType)
         {
             throw new System.NotImplementedException();
         }
 
-        public Task DeleteLeaveType(LeaveTypeVM leaveType)
+        public Task<Response<int>> DeleteLeaveType(int id)
         {
             throw new System.NotImplementedException();
         }
