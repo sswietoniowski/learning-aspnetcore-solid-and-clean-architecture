@@ -56,7 +56,7 @@ namespace HR.LeaveManagement.MVC.Controllers
             {
                 ModelState.AddModelError("", exception.Message);
             }
-            return View();
+            return View(leaveType);
         }
 
         // GET: LeaveTypesController/Edit/5
