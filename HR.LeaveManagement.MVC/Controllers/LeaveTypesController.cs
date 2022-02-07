@@ -93,18 +93,10 @@ namespace HR.LeaveManagement.MVC.Controllers
             return View(leaveType);
         }
 
-        // GET: LeaveTypesController/Delete/5
-        public async Task<ActionResult> Delete(int id)
-        {
-            var model = await _leaveTypeService.GetLeaveTypeDetails(id);
-
-            return View(model);
-        }
-
         // POST: LeaveTypesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id, LeaveTypeVM leaveType)
+        public async Task<ActionResult> Delete(int id)
         {
             try
             {
@@ -122,7 +114,7 @@ namespace HR.LeaveManagement.MVC.Controllers
             {
                 ModelState.AddModelError("", exception.Message);
             }
-            return View();
+            return BadRequest();
         }
     }
 }
