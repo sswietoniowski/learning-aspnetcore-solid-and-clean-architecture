@@ -26,7 +26,9 @@ namespace HR.LeaveManagement.MVC.Controllers
         // GET: LeaveTypesController/Details/5
         public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var model = await _leaveTypeService.GetLeaveTypeDetails(id);
+
+            return View(model);
         }
 
         // GET: LeaveTypesController/Create
@@ -62,7 +64,9 @@ namespace HR.LeaveManagement.MVC.Controllers
         // GET: LeaveTypesController/Edit/5
         public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var model = await _leaveTypeService.GetLeaveTypeDetails(id);
+
+            return View(model);
         }
 
         // POST: LeaveTypesController/Edit/5
