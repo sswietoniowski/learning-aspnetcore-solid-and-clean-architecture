@@ -1,15 +1,11 @@
+using HR.LeaveManagement.Mvc.Services.Base;
+using HR.LeaveManagement.MVC.Contracts;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using HR.LeaveManagement.MVC.Contracts;
-using HR.LeaveManagement.Mvc.Services.Base;
 
 namespace HR.LeaveManagement.MVC
 {
