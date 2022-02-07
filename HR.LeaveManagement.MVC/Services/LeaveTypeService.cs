@@ -29,9 +29,32 @@ namespace HR.LeaveManagement.MVC.Services
             return _mapper.Map<LeaveTypeVM>(leaveType);
         }
 
-        public Task<Response<int>> CreateLeaveType(CreateLeaveTypeVM leaveType)
+        public async Task<Response<int>> CreateLeaveType(CreateLeaveTypeVM leaveType)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var response = new Response<int>();
+                CreateLeaveTypeDto createLeaveType = _mapper.Map<CreateLeaveTypeDto>(leaveType);
+                var apiResponse = await _client.LeaveTypesPOSTAsync(createLeaveType);
+                if (apiResponse.Success)
+                {
+                    response.Data = apiResponse.Id;
+                    response.Success = true;
+                }
+                else
+                {
+                    foreach (var error in apiResponse.ValidationErrors)
+                    {
+                        response.ValidationErrors += error + Environment.NewLine;
+                    }
+                }
+                return response;
+
+            }
+            catch (ApiException exception)
+            {
+                return ConvertApiException<int>(exception);
+            }
         }
 
         public async Task<Response<int>> UpdateLeaveType(int id, LeaveTypeVM leaveType)
