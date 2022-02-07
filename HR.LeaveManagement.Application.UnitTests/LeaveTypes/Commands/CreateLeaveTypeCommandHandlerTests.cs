@@ -9,6 +9,7 @@ using Moq;
 using Shouldly;
 using System.Threading;
 using System.Threading.Tasks;
+using HR.LeaveManagement.Application.DTOs.Common;
 using HR.LeaveManagement.Application.Exceptions;
 using Xunit;
 
@@ -42,31 +43,31 @@ namespace HR.LeaveManagement.Application.UnitTests.LeaveTypes.Commands
         }
 
         [Fact]
-        public async Task CreateLeaveTypeTest()
+        public async Task ValidLeaveTypeAdded()
         {
             var result = await _handler.Handle(new CreateLeaveTypeCommand() { LeaveTypeDto = _leaveTypeDto }, CancellationToken.None);
 
             var leaveTypes = await _mockRepository.Object.GetAll();
 
-            result.ShouldBeOfType<int>();
+            result.ShouldBeOfType<BaseCommandResponse>();
 
             leaveTypes.Count.ShouldBe(4);
         }
 
         [Fact]
-        public async Task ValidationExceptionTest()
+        public async Task InvalidLeaveTypeAdded()
         {
             _leaveTypeDto.DefaultDays = -1;
 
-            ValidationException exception = await Should.ThrowAsync<ValidationException>(
-                async () => await _handler.Handle(new CreateLeaveTypeCommand() { LeaveTypeDto = _leaveTypeDto}, CancellationToken.None)
-            );
-
-            exception.ShouldNotBeNull();
+            var result = await _handler.Handle(new CreateLeaveTypeCommand() {LeaveTypeDto = _leaveTypeDto}, CancellationToken.None);
 
             var leaveTypes = await _mockRepository.Object.GetAll();
 
             leaveTypes.Count.ShouldBe(3);
+
+            result.ShouldBeOfType<BaseCommandResponse>();
+
+            result.Success.ShouldBeFalse();
         }
     }
 }
