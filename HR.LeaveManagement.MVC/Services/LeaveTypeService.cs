@@ -39,9 +39,17 @@ namespace HR.LeaveManagement.MVC.Services
             throw new System.NotImplementedException();
         }
 
-        public Task<Response<int>> DeleteLeaveType(int id)
+        public async Task<Response<int>> DeleteLeaveType(int id)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                await _client.LeaveTypesDELETEAsync(id);
+                return new Response<int>() { Success = true };
+            }
+            catch (ApiException exception)
+            {
+                return ConvertApiException<int>(exception);
+            }
         }
     }
 }
