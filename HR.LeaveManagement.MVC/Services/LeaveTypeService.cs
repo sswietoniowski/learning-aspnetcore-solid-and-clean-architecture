@@ -34,9 +34,18 @@ namespace HR.LeaveManagement.MVC.Services
             throw new System.NotImplementedException();
         }
 
-        public Task<Response<int>> UpdateLeaveType(int id, LeaveTypeVM leaveType)
+        public async Task<Response<int>> UpdateLeaveType(int id, LeaveTypeVM leaveType)
         {
-            throw new System.NotImplementedException();
+            try
+            {
+                var leaveTypeDto = _mapper.Map<LeaveTypeDto>(leaveType);
+                await _client.LeaveTypesPUTAsync(leaveTypeDto);
+                return new Response<int> { Success = true };
+            }
+            catch (ApiException exception)
+            {
+                return ConvertApiException<int>(exception);
+            }
         }
 
         public async Task<Response<int>> DeleteLeaveType(int id)
