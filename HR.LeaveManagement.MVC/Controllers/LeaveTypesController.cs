@@ -1,6 +1,7 @@
 ﻿using HR.LeaveManagement.MVC.Contracts;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.MVC.Controllers
 {
@@ -14,9 +15,10 @@ namespace HR.LeaveManagement.MVC.Controllers
         }
 
         // GET: LeaveTypesController
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
-            return View();
+            var model = await _leaveTypeService.GetLeaveTypes();
+            return View(model);
         }
 
         // GET: LeaveTypesController/Details/5
