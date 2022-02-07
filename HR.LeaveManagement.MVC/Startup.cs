@@ -1,11 +1,12 @@
-using HR.LeaveManagement.Mvc.Services.Base;
 using HR.LeaveManagement.MVC.Contracts;
+using HR.LeaveManagement.MVC.Services.Base;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
+using System.Reflection;
 
 namespace HR.LeaveManagement.MVC
 {
@@ -22,9 +23,14 @@ namespace HR.LeaveManagement.MVC
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddHttpClient<IClient, Client>(c => c.BaseAddress = new Uri(Configuration.GetValue<string>("Api:BaseUrl")));
+
+            services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
             services.AddScoped<ILeaveTypeService, ILeaveTypeService>();
             services.AddScoped<ILeaveRequestService, ILeaveRequestService>();
             services.AddScoped<ILeaveAllocationService, ILeaveAllocationService>();
+
+            services.AddSingleton<ILocalStorageService, ILocalStorageService>();
 
             services.AddControllersWithViews();
         }
