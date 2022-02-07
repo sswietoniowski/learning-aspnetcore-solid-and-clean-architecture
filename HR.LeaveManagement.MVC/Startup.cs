@@ -8,6 +8,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using HR.LeaveManagement.MVC.Contracts;
+using HR.LeaveManagement.Mvc.Services.Base;
 
 namespace HR.LeaveManagement.MVC
 {
@@ -23,6 +25,11 @@ namespace HR.LeaveManagement.MVC
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddHttpClient<IClient, Client>(c => c.BaseAddress = new Uri(Configuration.GetValue<string>("Api:BaseUrl")));
+            services.AddScoped<ILeaveTypeService, ILeaveTypeService>();
+            services.AddScoped<ILeaveRequestService, ILeaveRequestService>();
+            services.AddScoped<ILeaveAllocationService, ILeaveAllocationService>();
+
             services.AddControllersWithViews();
         }
 
