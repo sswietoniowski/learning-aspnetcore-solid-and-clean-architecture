@@ -22,7 +22,7 @@ namespace HR.LeaveManagement.MVC.Controllers
         }
 
         // GET: LeaveTypesController/Details/5
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
             return View();
         }
@@ -36,7 +36,7 @@ namespace HR.LeaveManagement.MVC.Controllers
         // POST: LeaveTypesController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(IFormCollection collection)
+        public async Task<ActionResult> Create(IFormCollection collection)
         {
             try
             {
@@ -49,7 +49,7 @@ namespace HR.LeaveManagement.MVC.Controllers
         }
 
         // GET: LeaveTypesController/Edit/5
-        public ActionResult Edit(int id)
+        public async Task<ActionResult> Edit(int id)
         {
             return View();
         }
@@ -57,7 +57,7 @@ namespace HR.LeaveManagement.MVC.Controllers
         // POST: LeaveTypesController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, IFormCollection collection)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace HR.LeaveManagement.MVC.Controllers
         }
 
         // GET: LeaveTypesController/Delete/5
-        public ActionResult Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             return View();
         }
@@ -78,7 +78,7 @@ namespace HR.LeaveManagement.MVC.Controllers
         // POST: LeaveTypesController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public async Task<ActionResult> Delete(int id, IFormCollection collection)
         {
             try
             {
