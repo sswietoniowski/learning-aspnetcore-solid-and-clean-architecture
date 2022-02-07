@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using HR.LeaveManagement.MVC.Contracts;
 using HR.LeaveManagement.MVC.Services.Base;
 using HR.LeaveManagement.MVC.Views.LeaveTypes;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.MVC.Services
 {
