@@ -12,12 +12,12 @@ using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.MVC.Services
 {
-    public class AuthenticateService : BaseHttpService, Contracts.IAuthenticationService
+    public class AuthenticationService : BaseHttpService, Contracts.IAuthenticationService
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private JwtSecurityTokenHandler _tokenHandler;
 
-        public AuthenticateService(IClient client, ILocalStorageService localStorage,
+        public AuthenticationService(IClient client, ILocalStorageService localStorage,
             IHttpContextAccessor httpContextAccessor) : base(client, localStorage)
         {
             _httpContextAccessor = httpContextAccessor;
