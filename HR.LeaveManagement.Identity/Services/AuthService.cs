@@ -94,6 +94,13 @@ namespace HR.LeaveManagement.Identity.Services
 
         public async Task<RegistrationResponse> Register(RegistrationRequest request)
         {
+            var existingUser = await _userManager.FindByNameAsync(request.UserName);
+
+            if (existingUser != null)
+            {
+                throw new Exception($"Username '{request.UserName}' already exists!");
+            }
+
             var user = new ApplicationUser
             {
                 Email = request.Email,
