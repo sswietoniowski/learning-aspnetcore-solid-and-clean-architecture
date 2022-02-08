@@ -32,5 +32,11 @@ namespace HR.LeaveManagement.MVC.Controllers
             ModelState.AddModelError(string.Empty, "Login In Attempt Failed. Please try again.");
             return View(login);
         }
+
+        public async Task<IActionResult> Logout(string returnUrl)
+        {
+            await _authenticationService.Logout();
+            return LocalRedirect(returnUrl);
+        }
     }
 }

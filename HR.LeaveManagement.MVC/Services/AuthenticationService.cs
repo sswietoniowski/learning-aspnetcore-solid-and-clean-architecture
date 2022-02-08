@@ -61,7 +61,6 @@ namespace HR.LeaveManagement.MVC.Services
             {
                 _localStorage.ClearStorage(new List<string> { "token" });
                 await _httpContextAccessor.HttpContext.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
-
             }
             catch (Exception)
             {
