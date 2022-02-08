@@ -85,6 +85,7 @@ namespace HR.LeaveManagement.MVC.Services
 
                 if (!string.IsNullOrEmpty(response?.UserId))
                 {
+                    await Authenticate(registrationRequest.Email, registrationRequest.Password);
                     return true;
                 }
 
