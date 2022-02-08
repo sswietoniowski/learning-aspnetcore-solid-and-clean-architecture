@@ -1,5 +1,6 @@
 ﻿using HR.LeaveManagement.MVC.Contracts;
 using HR.LeaveManagement.MVC.Views.LeaveTypes;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -7,6 +8,7 @@ using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.MVC.Controllers
 {
+    [Authorize(Roles="Administrator")]
     public class LeaveTypesController : Controller
     {
         private readonly ILeaveTypeService _leaveTypeService;
