@@ -13,11 +13,13 @@ namespace HR.LeaveManagement.Identity.Configurations
                 {
                     Id = "eff52106-7b29-43d4-b2c6-57ef8905908e",
                     Name = "Employee",
+                    NormalizedName = "EMPLOYEE"
                 },
                 new IdentityRole
                 {
                     Id = "95b75644-40a6-4802-899d-10ec4111353b",
-                    Name = "Administrator"
+                    Name = "Administrator",
+                    NormalizedName = "ADMINISTRATOR"
                 }
             );
         }

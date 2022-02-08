@@ -4,14 +4,16 @@ using HR.LeaveManagement.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace HR.LeaveManagement.Identity.Migrations
 {
     [DbContext(typeof(LeaveManagementIdentityDbContext))]
-    partial class LeaveManagementIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220208143415_CorrectedUserAndRoleData")]
+    partial class CorrectedUserAndRoleData
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
