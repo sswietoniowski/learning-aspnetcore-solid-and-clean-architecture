@@ -37,8 +37,8 @@ namespace HR.LeaveManagement.MVC
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
             services.AddScoped<ILeaveTypeService, LeaveTypeService>();
+            services.AddScoped<ILeaveAllocationService, LeaveAllocationService>();
             //services.AddScoped<ILeaveRequestService, ILeaveRequestService>();
-            //services.AddScoped<ILeaveAllocationService, ILeaveAllocationService>();
 
             services.AddSingleton<ILocalStorageService, LocalStorageService>();
 

@@ -13,7 +13,7 @@ using System.Text;
 
 namespace HR.LeaveManagement.Identity
 {
-    public static class IdentityServiceRegistration
+    public static class IdentityServicesRegistration
     {
         public static IServiceCollection ConfigureIdentityService(this IServiceCollection services, IConfiguration configuration)
         {
@@ -25,6 +25,7 @@ namespace HR.LeaveManagement.Identity
                 .AddEntityFrameworkStores<LeaveManagementIdentityDbContext>().AddDefaultTokenProviders();
 
             services.AddTransient<IAuthService, AuthService>();
+            services.AddTransient<IUserService, UserService>();
             services.AddAuthentication(options =>
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
