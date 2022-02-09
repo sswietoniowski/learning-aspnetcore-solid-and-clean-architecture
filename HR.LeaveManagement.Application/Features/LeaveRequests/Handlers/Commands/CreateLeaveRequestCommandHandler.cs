@@ -1,18 +1,18 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using HR.LeaveManagement.Application.Contracts.Infrastructure;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.DTOs.LeaveRequest.Validators;
 using HR.LeaveManagement.Application.Features.LeaveRequests.Requests.Commands;
+using HR.LeaveManagement.Application.Models;
 using HR.LeaveManagement.Application.Responses;
 using HR.LeaveManagement.Domain;
 using MediatR;
+using Microsoft.AspNetCore.Http;
+using System;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading;
 using System.Threading.Tasks;
-using HR.LeaveManagement.Application.Models;
-using Microsoft.AspNetCore.Http;
-using System.IdentityModel.Tokens.Jwt;
 
 namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Commands
 {
@@ -70,7 +70,7 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Command
             response.Message = "Creation Successful";
             response.Id = leaveRequest.Id;
 
-            var emailAddress = _httpContextAccessor.HttpContext.User.FindFirst(JwtRegisteredClaimNames.Email).Value;
+            var emailAddress = _httpContextAccessor.HttpContext.User.FindFirst(ClaimTypes.Email).Value;
 
             var email = new Email
             {
