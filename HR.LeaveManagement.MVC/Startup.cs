@@ -38,7 +38,7 @@ namespace HR.LeaveManagement.MVC
 
             services.AddScoped<ILeaveTypeService, LeaveTypeService>();
             services.AddScoped<ILeaveAllocationService, LeaveAllocationService>();
-            services.AddScoped<ILeaveRequestService, ILeaveRequestService>();
+            services.AddScoped<ILeaveRequestService, LeaveRequestService>();
 
             services.AddSingleton<ILocalStorageService, LocalStorageService>();
 
