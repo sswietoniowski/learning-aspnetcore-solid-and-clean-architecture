@@ -28,6 +28,7 @@ namespace HR.LeaveManagement.Api
             services.ConfigureInfrastructureServices(Configuration);
             services.ConfigurePersistenceServices(Configuration);
             services.ConfigureIdentityService(Configuration);
+            services.AddHttpContextAccessor();
 
             services.AddControllers();
             AddSwagerDoc(services);
