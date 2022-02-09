@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HR.LeaveManagement.Application.Contracts.Persistence;
+using System.Linq;
 
 namespace HR.LeaveManagement.Persistence.Repositories
 {
@@ -45,6 +46,15 @@ namespace HR.LeaveManagement.Persistence.Repositories
         public async Task<LeaveAllocation> GetUserAllocations(string userId, int leaveTypeId)
         {
             return await _dbContext.LeaveAllocation.FirstOrDefaultAsync(q => q.EmployeeId == userId && q.LeaveTypeId == leaveTypeId);
+        }
+
+        public async Task<IReadOnlyCollection<LeaveAllocation>> GetLeaveAllocationsWithDetails(string userId)
+        {
+            var leaveAllocations = await _dbContext.LeaveAllocation.Where(a => a.EmployeeId == userId)
+                .Include(a => a.LeaveType)
+                .ToListAsync();
+
+            return leaveAllocations;
         }
     }
 }

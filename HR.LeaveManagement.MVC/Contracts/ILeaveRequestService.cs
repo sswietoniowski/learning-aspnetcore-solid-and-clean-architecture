@@ -9,6 +9,8 @@ namespace HR.LeaveManagement.MVC.Contracts
         Task<AdminLeaveRequestViewVM> GetAdminLeaveRequestList();
         Task<EmployeeLeaveRequestViewVM> GetUserLeaveRequests();
         Task<Response<int>> CreateLeaveRequest(CreateLeaveRequestVM leaveRequest);
+        Task<LeaveRequestVM> GetLeaveRequest(int id);
         Task DeleteLeaveRequest(int id);
+        Task ApproveLeaveRequest(int id, bool approved);
     }
 }

@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using HR.LeaveManagement.Application.Contracts.Persistence;
+using System.Linq;
 
 namespace HR.LeaveManagement.Persistence.Repositories
 {
@@ -35,6 +36,15 @@ namespace HR.LeaveManagement.Persistence.Repositories
             leaveRequest.Approved = approvalStatus;
             _dbContext.Entry(leaveRequest).State = EntityState.Modified;
             await _dbContext.SaveChangesAsync();
+        }
+
+        public async Task<IReadOnlyCollection<LeaveRequest>> GetLeaveRequestsWithDetails(string userId)
+        {
+            var leaveRequests = await _dbContext.LeaveRequests.Where(q => q.RequestingEmployeeId == userId)
+                .Include(r => r.LeaveType)
+                .ToListAsync();
+
+            return leaveRequests;
         }
     }
 }
