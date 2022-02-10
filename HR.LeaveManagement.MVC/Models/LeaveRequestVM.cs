@@ -7,6 +7,9 @@ namespace HR.LeaveManagement.MVC.Views.LeaveTypes
 {
     public class LeaveRequestVM
     {
+        public object DateRequested { get; internal set; }
+        public object StartDate { get; internal set; }
+        public object EndDate { get; internal set; }
     }
 
     public class CreateLeaveRequestVM

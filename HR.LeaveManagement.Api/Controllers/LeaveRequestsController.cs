@@ -22,7 +22,7 @@ namespace HR.LeaveManagement.Api.Controllers
 
         // GET: api/<LeaveRequestsController>
         [HttpGet]
-        public async Task<ActionResult<List<LeaveRequestDto>>> Get(bool isLoggedInUser = false)
+        public async Task<ActionResult<List<LeaveRequestListDto>>> Get(bool isLoggedInUser = false)
         {
             var query = new GetLeaveRequestListRequest() { IsLoggedInUser = isLoggedInUser };
             var leaveRequests = await _mediator.Send(query);
