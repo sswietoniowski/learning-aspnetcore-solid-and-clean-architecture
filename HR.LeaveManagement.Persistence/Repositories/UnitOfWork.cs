@@ -1,4 +1,5 @@
 ﻿using HR.LeaveManagement.Application.Contracts.Persistence;
+using System;
 using System.Threading.Tasks;
 
 namespace HR.LeaveManagement.Persistence.Repositories
@@ -25,6 +26,7 @@ namespace HR.LeaveManagement.Persistence.Repositories
         public void Dispose()
         {
             _context.Dispose();
+            GC.SuppressFinalize(this);
         }
 
         public async Task Save()

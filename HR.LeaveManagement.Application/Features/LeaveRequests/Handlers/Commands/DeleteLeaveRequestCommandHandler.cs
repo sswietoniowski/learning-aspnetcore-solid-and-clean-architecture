@@ -10,23 +10,24 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Command
 {
     public class DeleteLeaveRequestCommandHandler : IRequestHandler<DeleteLeaveRequestCommand, Unit>
     {
-        private readonly ILeaveRequestRepository _leaveRequestRepository;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public DeleteLeaveRequestCommandHandler(ILeaveRequestRepository leaveRequestRepository)
+        public DeleteLeaveRequestCommandHandler(IUnitOfWork unitOfWork)
         {
-            _leaveRequestRepository = leaveRequestRepository;
+            this._unitOfWork = unitOfWork;
         }
 
         public async Task<Unit> Handle(DeleteLeaveRequestCommand request, CancellationToken cancellationToken)
         {
-            var leaveRequest = await _leaveRequestRepository.Get(request.Id);
+            var leaveRequest = await _unitOfWork.LeaveRequestRepository.Get(request.Id);
 
             if (leaveRequest == null)
             {
                 throw new NotFoundException(nameof(LeaveRequest), request.Id);
             }
 
-            await _leaveRequestRepository.Delete(leaveRequest);
+            await _unitOfWork.LeaveRequestRepository.Delete(leaveRequest);
+            await _unitOfWork.Save();
             return Unit.Value;
         }
     }
