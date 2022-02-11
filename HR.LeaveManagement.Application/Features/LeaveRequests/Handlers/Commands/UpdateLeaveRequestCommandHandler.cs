@@ -55,8 +55,8 @@ namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Command
                     allocation.NumberDays -= daysRequested;
 
                     await _unitOfWork.LeaveAllocationRepository.Update(allocation);
-                    await _unitOfWork.Save();
                 }
+                await _unitOfWork.Save();
             }
 
             return Unit.Value;
