@@ -1,15 +1,15 @@
 ﻿using AutoMapper;
+using HR.LeaveManagement.Application.Constants;
+using HR.LeaveManagement.Application.Contracts.Identity;
+using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.DTOs.LeaveRequest;
 using HR.LeaveManagement.Application.Features.LeaveRequests.Requests.Queries;
+using HR.LeaveManagement.Domain;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
 using System.Threading;
 using System.Threading.Tasks;
-using HR.LeaveManagement.Application.Contracts.Persistence;
-using Microsoft.AspNetCore.Http;
-using HR.LeaveManagement.Application.Contracts.Identity;
-using HR.LeaveManagement.Domain;
-using HR.LeaveManagement.Application.Constants;
 
 namespace HR.LeaveManagement.Application.Features.LeaveRequests.Handlers.Queries
 {
