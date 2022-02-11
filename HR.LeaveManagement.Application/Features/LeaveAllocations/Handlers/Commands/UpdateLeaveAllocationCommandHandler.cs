@@ -2,6 +2,7 @@
 using HR.LeaveManagement.Application.Contracts.Infrastructure;
 using HR.LeaveManagement.Application.Contracts.Persistence;
 using HR.LeaveManagement.Application.DTOs.LeaveAllocation.Validators;
+using HR.LeaveManagement.Application.Exceptions;
 using HR.LeaveManagement.Application.Features.LeaveAllocations.Requests.Commands;
 using MediatR;
 using System;
@@ -32,11 +33,17 @@ namespace HR.LeaveManagement.Application.Features.LeaveAllocations.Handlers.Comm
             var validationResult = await validator.ValidateAsync(request.LeaveAllocationDto);
             if (validationResult.IsValid == false)
             {
-                throw new Exception();
+                throw new ValidationException(validationResult);
             }
 
             var leaveAllocation =
                 await _unitOfWork.LeaveAllocationRepository.Get(request.LeaveAllocationDto.Id);
+
+            if (leaveAllocation is null)
+            {
+                throw new NotFoundException(nameof(leaveAllocation), request.LeaveAllocationDto.Id);
+            }
+
             _mapper.Map(request.LeaveAllocationDto, leaveAllocation);
             await _unitOfWork.LeaveAllocationRepository.Update(leaveAllocation);
             await _unitOfWork.Save();
